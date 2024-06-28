@@ -10,12 +10,19 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
+            background-color: pink; /* Set background color to pink */
         }
         #letter {
             display: none;
-            margin-top: 20px;
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: white; /* Background color of the letter */
+            border: 2px solid pink; /* Border color matching the background */
             white-space: pre-wrap; /* Ensures line breaks are respected */
             text-align: left;
+            color: black; /* Ensure text is readable */
         }
     </style>
 </head>

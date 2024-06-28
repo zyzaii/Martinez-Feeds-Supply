@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Page</title>
+    <title>Appreciation Letter</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 20%;
-            background-image: url('https://wallpapercave.com/wp/wp10236650.jpg'); /* Set background image to Kuromi */
+            margin-top: 20px;
+            background-image: url('https://wallpapercave.com/wp/wp10236650.jpg'); /* Set initial background image to Kuromi */
             background-size: cover;
             background-repeat: no-repeat;
-            color: white; /* Ensure text is readable */
+            color: white; /* Text color */
         }
-        #letter {
+        #initial-heading {
+            display: block;
+        }
+        #letter-container {
             display: none;
             margin: 20px auto;
             padding: 20px;
             width: 80%;
             max-width: 600px;
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for readability */
-            border: 2px solid #f792b1; /* Border color */
-            white-space: pre-wrap; /* Ensures line breaks are respected */
+            background-color: rgba(255, 192, 203, 0.8); /* Semi-transparent pink background */
+            border: 10px solid transparent; /* Transparent border initially */
+            white-space: pre-wrap;
             text-align: left;
-            color: white; /* Ensure text is readable */
-        }
-        #animal-response {
-            font-weight: bold;
-            color: #ffcccb;
+            color: black;
+            background-image: url('https://www.whatspaper.com/wp-content/uploads/2022/08/hd-kuromi-wallpaper-whatspaper-16-300x533.jpg'); /* Kuromi background for the letter */
+            background-size: cover;
+            border-image-source: url('https://www.whatspaper.com/wp-content/uploads/2022/08/hd-kuromi-wallpaper-whatspaper-16-300x533.jpg'); /* Kuromi background for the border */
+            border-image-slice: 10; /* Adjust as needed for border size */
+            border-image-width: 10px;
+            color: white; /* Text color */
         }
         .play-music {
             display: block;
@@ -41,10 +46,10 @@
     </style>
 </head>
 <body>
-    <h1>Are you Alexa Elvie Camille Novero?</h1>
+    <h1 id="initial-heading">Are you Alexa Elvie Camille Novero?</h1>
     <button onclick="askFavoriteAnimal()">Yes</button>
 
-    <div id="letter">
+    <div id="letter-container">
         <h1>Hi neng, appreciation letter for u</h1>
         <p id="animal-response"></p>
         <p>No one ever thought or predicted that we would somehow meet each other. Especially, no one ever predicted that you would become someone so dear to me. Even you, who always seemed aloof when uncomfortable, became a carefree person around someone who made you feel comfortable. I'm so glad that I belong to those people who have witnessed that side of your personality.</p>
@@ -59,7 +64,6 @@
 
         <p>And I'm willing to do anything just for you—for your sake, for your safety, for your well-being. If you lose your track, don't worry, you have me. You may be wandering around, but you won't be alone. I am always here, ready to be lost with you, ready to figure out the right path with you. I will always be here, ready to be your home in this world full of sh*t. I will always be the Zai who will do anything just for their pababy kamil. I will always be your support system and your strength. Whenever you feel down, I'm always here, trying to find a solution to make you feel happy. Don't be afraid to face your problems because I am always here, coming up with a lot of different solutions, to be with you while you are figuring out what to do. I am always here, willing to prove that a friend is not just a word; rather, it is a person named Zairel.</p>
 
-        <p>Sincerely yours,<br>Zyzaii</p>
         <a class="play-music" onclick="playMusic()">Play Music</a>
     </div>
 
@@ -69,9 +73,9 @@
         function askFavoriteAnimal() {
             var favoriteAnimal = prompt("What is your favorite animal?");
             if (favoriteAnimal && favoriteAnimal.toLowerCase() === "capybara") {
-                document.querySelector('h1').style.display = 'none'; // Hide the initial question
+                document.getElementById('initial-heading').style.display = 'none'; // Hide the initial question
                 document.querySelector('button').style.display = 'none'; // Hide the Yes button
-                document.getElementById('letter').style.display = 'block'; // Show the letter
+                document.getElementById('letter-container').style.display = 'block'; // Show the letter
             } else {
                 attempts--;
                 if (attempts > 0) {

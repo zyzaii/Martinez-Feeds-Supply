@@ -9,7 +9,10 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
-            background-color: pink; /* Set background color to pink */
+            background-image: url('https://wallpapercave.com/wp/wp10236650.jpg'); /* Set background image to Kuromi */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white; /* Ensure text is readable against the background */
         }
         #letter {
             display: none;
@@ -17,7 +20,7 @@
             padding: 20px;
             width: 80%;
             max-width: 600px;
-            background-color: white; /* Background color of the letter */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
             border: 2px solid pink; /* Border color matching the background */
             white-space: pre-wrap; /* Ensures line breaks are respected */
             text-align: left;
@@ -27,11 +30,20 @@
             font-weight: bold;
             color: #333;
         }
+        .play-music {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #00f;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>Are you Alexa Elvie Camille Novero?</h1>
     <button onclick="askFavoriteAnimal()">Yes</button>
+    <a class="play-music" onclick="playMusic()">Play Music</a>
 
     <div id="letter">
         <p id="animal-response"></p>
@@ -60,6 +72,12 @@
                 alert("Incorrect answer. Please try again.");
             }
         }
+
+        function playMusic() {
+            var audio = new Audio('your-song-url-here.mp3');
+            audio.play();
+        }
     </script>
 </body>
 </html>
+

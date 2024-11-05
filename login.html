@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        input[type="email"], input[type="password"] {
+            width: calc(100% - 10px);
+            max-width: 350px;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input.error-input {
+            border-color: red;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .create-account, .browse-account {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .create-account a, .browse-account a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .create-account a:hover, .browse-account a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST" id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="<?= !empty($error_message) ? 'error-input' : '' ?>" required>
+            
+            <?php if (!empty($error_message)): ?>
+                <p class="error-message"><?= $error_message; ?></p>
+            <?php endif; ?>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <div class="create-account">
+            <p>Don't have an account? <a href="register.php">Create one</a></p>
+        </div>
+
+        <div class="browse-account">
+            <p><a href="index.html?user=no_account">Browse without account</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

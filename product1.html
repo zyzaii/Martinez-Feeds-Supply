@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Remove underline and change cursor on hover */
+        a.product-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        a.product-link:hover {
+            text-decoration: none;
+        }
+        header {
+            background-color: #4CAF50; /* Dark green header */
+            display: flex;
+            align-items: center;
+            padding: 10px; /* Add some padding */
+        }
+        .header-logo {
+            margin-right: 10px; /* Space between logo and title */
+        }
+        
+        .card-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px; /* Fixed height */
+            overflow: hidden; /* Ensure the image does not exceed the container */
+        }
+        .fixed-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .btn-secondary {
+            background-color: #5cb85c; /* Adjust secondary button color */
+        }
+        .description {
+            margin-top: 20px; /* Space between product details and description */
+        }
+    </style>
+    <script>
+        // Function to check if the user is identified as "no account"
+        function isNoAccountUser() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('user') === 'no_account';
+        }
+
+        // Handle "Add to Cart" button click
+        function handleAddToCartClick(event) {
+            if (isNoAccountUser()) {
+                event.preventDefault(); // Prevent the default behavior
+                alert("Please log in to add items to the cart."); // Alert message
+                // Open the login page in a new window with larger dimensions
+                window.open("log.php", "Login", "width=800,height=600,menubar=no,toolbar=no,location=no,resizable=yes");
+            }
+        }
+
+        // Handle "Buy Now" button click
+        function handleBuyNow(event) {
+            if (isNoAccountUser()) {
+                event.preventDefault(); // Prevent the default behavior
+                alert("Please log in to proceed with the purchase."); // Alert message
+                // Open the login page in a new window with larger dimensions
+                window.open("log.php", "Login", "width=800,height=600,menubar=no,toolbar=no,location=no,resizable=yes");
+            }
+        }
+
+        // Attach click events to all product links and buttons after the DOM has loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButton = document.querySelector('.btn-success');
+            const buyNowButton = document.querySelector('.btn-primary');
+
+            // Attach the click event listener for "Add to Cart"
+            if (addToCartButton) {
+                addToCartButton.addEventListener('click', handleAddToCartClick);
+            }
+
+            // Attach the click event listener for "Buy Now"
+            if (buyNowButton) {
+                buyNowButton.addEventListener('click', handleBuyNow);
+            }
+
+            const productLinks = document.querySelectorAll('.product-link');
+            productLinks.forEach(link => {
+                link.addEventListener('click', handleProductClick);
+            });
+        });
+
+        function handleProductClick(event) {
+            const productLink = event.target.closest('a').getAttribute('href'); // Get the product link
+            if (isNoAccountUser()) {
+                event.preventDefault(); // Prevent the default behavior
+                // Redirect to the product page with "user=no_account" parameter
+                window.location.href = productLink + "?user=no_account";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="text-white text-left">
+        <img src="https://example.com/loprgo.png" alt="Logo" class="header-logo" width="50"> <!-- Add your logo image URL -->
+        <h1 class="h3">AGRICART</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <!-- Shopping Cart Icon -->
+                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Product Image -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-img-container">
+                        <img src="product_pics/bmegpre.jpg" class="card-img-top fixed-image" alt="Agricultural Product">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="col-md-6">
+                <h2>B-MEG Premium Pre-Starter Hog Pellet 25KG - For Pigs, Hogs - 25 kg Pig Feeds - Pig Hog Feeds - With Lean Plus Technology - San Miguel Foods - BMEG Premium Pre Starter - 25 kilos</h2>
+                <p class="text-muted">Category: Agriculture</p>
+                <h4>₱1,830.00</h4>
+
+                <!-- Add to Cart & Buy Now Buttons -->
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-success btn-lg me-2">Add to Cart</button>
+                    <button class="btn btn-primary btn-lg">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wider Description Section -->
+        <div class="row">
+            <div class="col-12 description">
+                <h3>Product Description</h3>
+                <p>
+                    •For Pigs, Hogs - 25 kg Pig Feeds<br>
+                    •36 to 50 days old<br>
+                    •With Lean Plus Technology<br>
+                    •By San Miguel Foods
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
